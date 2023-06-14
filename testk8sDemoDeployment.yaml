@@ -1,0 +1,43 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: testk8s
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: testk8s
+  template:
+    metadata:
+      labels:
+        app: testk8s
+    spec:
+      containers:
+        - name: testk8s
+          image: shrutika1405/testk8s:1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            timeoutSeconds: 20
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: testk8s
+  name: testk8s
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    app: testk8s
