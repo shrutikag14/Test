@@ -14,7 +14,7 @@ public class Testk8sController {
 
 	@GetMapping("/")
 	public String getk8Data() {
-		return "test k8s up ";
+		return "test k8s up again";
 	}
 	
 	@PostMapping("/login")
