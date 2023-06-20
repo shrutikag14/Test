@@ -34,7 +34,7 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.output.registry }}
-          ECR_REPOSITORY: shrutikag14/Test
+          ECR_REPOSITORY: testapp-deployment
           IMAGE_TAG: latest
         run: |
           docker build . -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
