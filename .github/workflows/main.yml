@@ -1,6 +1,9 @@
 name: build and push
 
-
+on:
+  push:
+    branches:
+      - 'master'
 
 jobs:
   build-and-push:
