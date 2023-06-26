@@ -42,5 +42,6 @@ jobs:
           ECR_REPOSITORY: app
           IMAGE_TAG: latest
         run: |
+          lstat()
           docker build -t abc/xyz:$IMAGE_TAG -f Dockerfile .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
